@@ -1,0 +1,15 @@
+// add this section at the end of orthanc.json
+  "DicomWeb" : {
+
+     "Enable" : true,             // Whether DICOMweb support is enabled
+
+     "Root" : "/dicom-web/",      // Root URI of the DICOMweb API (for QIDO-RS, STOW-RS and WADO-RS),
+
+    "Servers" : {
+
+     "sample" : [ "http://client_IP/dicom-web/" ]
+
+   }
+  }
+
+  //}

@@ -1,0 +1,44 @@
+# Documentación Redirección http-https:
+# https://doc.traefik.io/traefik/migration/v1-to-v2/#http-to-https-redirection-is-now-configured-on-routers
+# código ejemplo:
+# https://www.youtube.com/watch?v=naCHq6sMMI8
+
+version: "3.3"
+
+services:
+  #---------------------------------------------------------------------------------------------------------------------
+  #------------------- ORTHANC  ----------------------------------------------------------------------------------------
+  #---------------------------------------------------------------------------------------------------------------------
+
+  orthanc:
+    image: "jodogne/orthanc-plugins:1.10.1"
+    ports:
+      - "4242:4242"
+      - "8042:8042"
+    expose:
+      - "8042"
+      - "4242"
+    volumes:
+      - "./orthanc/orthanc.json:/etc/orthanc/orthanc.json:ro"
+      - "orthanc-storage:/var/lib/orthanc/db"
+    depends_on:
+      - orthanc-db
+
+  orthanc-db:
+    image: postgres:bullseye
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: orthanc
+    restart: unless-stopped
+    expose:
+      - "5432"
+    volumes:
+      - orthanc-db:/var/lib/postgresql/data
+
+
+
+
+volumes:
+  orthanc-db:
+  orthanc-storage:

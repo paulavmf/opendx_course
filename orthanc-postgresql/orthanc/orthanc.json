@@ -873,7 +873,8 @@
       "SOPClassUID",
       "ContentDate",
       "ContentTime",
-      "FrameOfReferenceUID",
+      "FrameOfReferenceUBind for 0.0.0.0:8042 failed: port is already allocated
+ID",
       "PixelSpacing",
       "SpecificCharacterSet",
       "BitsAllocated"
@@ -910,7 +911,7 @@
   "Port" : 5432,
   "Database" : "orthanc",
   "Username" : "postgres",
-  "Password" : "pgpassword"
+  "Password" : "postgres"
 },
    "DicomWeb" : {
       "Enable" : true,             // Whether DICOMweb support is enabled

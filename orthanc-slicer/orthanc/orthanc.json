@@ -328,7 +328,7 @@
   // The list of the known DICOM modalities. This option is ignored if
   // "DicomModalitiesInDatabase" is set to "true", in which case you
   // must use the REST API to define modalities.
-  "DicomModalities" : {
+
     /**
      * Uncommenting the following line would enable Orthanc to
      * connect to an instance of the "storescp" open-source DICOM
@@ -346,7 +346,13 @@
      * specific PACS manufacturers. The allowed values are currently:
      * - "Generic" (default value),
      * - "GenericNoWildcardInDates" (to replace "*" by "" in date fields
-     *   in outgoing C-FIND requests originating from Orthanc),
+     *   in ou   "Enable" : true,             // Whether DICOMweb support is enabled
+
+     "Root" : "/dicom-web/",      // Root URI of the DICOMweb API (for QIDO-RS, STOW-RS and WADO-RS),
+
+    "Servers" : {
+
+     "sample" : [ "http://server_IP/dicom-web/" ]tgoing C-FIND requests originating from Orthanc),
      * - "GenericNoUniversalWildcard" (to replace "*" by "" in all fields
      *   in outgoing C-FIND SCU requests originating from Orthanc),
      * - "Vitrea",
@@ -355,7 +361,7 @@
      *
      * This parameter is case-sensitive.
      **/
-    "docker" : [ "slicer", "172.17.0.4", 8080, "Generic" ]
+    "docker" : [ "slicer", "slicer", 8080, "Generic" ]
     /**
      * By default, the Orthanc SCP accepts all DICOM commands (C-ECHO,
      * C-STORE, C-FIND, C-MOVE, C-GET and storage commitment) issued by the

@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+
+  slicer:
+    image: stevepieper/slicer-chronicle:4.10.2
+    volumes:
+      - slicer-storage:/var/cache/apt
+    ports:
+      - "8080:8080"
+
+
+volumes:
+
+  slicer-storage:
+
+

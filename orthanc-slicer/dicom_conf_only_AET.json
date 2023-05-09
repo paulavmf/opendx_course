@@ -1,0 +1,31 @@
+// look for these keys configuration in orthanc.json and change the value to this
+// Cherchez ces clés de configuration dans orthanc.json et changez la valeur à ceci
+
+“DicomAlwaysAllowEcho” : false,
+“DicomAlwaysAllowStore” : false,
+“DicomAlwaysAllowFind” : false,
+“DicomAlwaysAllowGet” : false,
+“DicomAlwaysAllowMove” : false,
+
+“DicomCheckModalityHost” : false, // esta es la opción que hará que orthanc solo acepte las modalities según su aAETitle
+
+  “DicomModalities” : {
+
+  "slicerhub" : {
+  "AET" : "slicer",
+  "Port" : 4444, // A default value is necessaty even of not needed / Une valeur par défaut est nécessaire même si elle n'est pas requise
+  "Host" : "wwww", // A value is necessaty even of not needed / Une valeur par défaut est nécessaire même si elle n'est pas requise
+  "Manufacturer" : "Generic",
+  "AllowEcho" : true,
+  "AllowFind" : true,
+  "AllowFindWorklist" : true,       // new in 1.10.0
+  "AllowGet"  : true,
+  "AllowMove" : true,
+  "AllowStore" : true,
+  "AllowStorageCommitment" : true,  // new in 1.6.0
+  "AllowTranscoding" : true,         // new in 1.7.0
+  "UseDicomTls" : true,              // new in 1.9.0
+  "LocalAet" : "ORTHANC",               // new in 1.9.0
+  "Timeout" : 10                     // new in 1.9.1
+  }
+}

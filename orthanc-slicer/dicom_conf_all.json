@@ -1,0 +1,8 @@
+// look for these keys configuration in orthanc.json and change the value to this
+// Cherchez ces clés de configuration dans orthanc.json et changez la valeur à ceci
+
+"DicomAlwaysAllowEcho" : true,
+"DicomAlwaysAllowStore" : true,
+"DicomAlwaysAllowFind" : true,
+"DicomAlwaysAllowGet" : true,
+"DicomAlwaysAllowMove" : true,

@@ -273,18 +273,18 @@
   // to "true" (resp. "false") corresponds to "--require-peer-cert"
   // (resp. "--verify-peer-cert") in the DCMTK command-line
   // tools. (new in Orthanc 1.9.3)
-  "DicomTlsRemoteCertificateRequired" : true,
+  "DicomTlsRemoteCertificateRequired" : false,
 
   // Whether the Orthanc SCP allows incoming C-ECHO requests, even
   // from SCU modalities it does not know about (i.e. that are not
   // listed in the "DicomModalities" option above). Orthanc 1.3.0
   // is the only version to behave as if this argument were set to "false".
-  "DicomAlwaysAllowEcho" : true,
+  "DicomAlwaysAllowEcho" : false,
 
   // Whether the Orthanc SCP allows incoming C-STORE requests, even
   // from SCU modalities it does not know about (i.e. that are not
   // listed in the "DicomModalities" option above)
-  "DicomAlwaysAllowStore" : true,
+  "DicomAlwaysAllowStore" : false,
 
   // Whether the Orthanc SCP allows incoming C-FIND requests, even
   // from SCU modalities it does not know about (i.e. that are not
@@ -328,7 +328,7 @@
   // The list of the known DICOM modalities. This option is ignored if
   // "DicomModalitiesInDatabase" is set to "true", in which case you
   // must use the REST API to define modalities.
-
+  "DicomModalities" : {
     /**
      * Uncommenting the following line would enable Orthanc to
      * connect to an instance of the "storescp" open-source DICOM
@@ -346,13 +346,7 @@
      * specific PACS manufacturers. The allowed values are currently:
      * - "Generic" (default value),
      * - "GenericNoWildcardInDates" (to replace "*" by "" in date fields
-     *   in ou   "Enable" : true,             // Whether DICOMweb support is enabled
-
-     "Root" : "/dicom-web/",      // Root URI of the DICOMweb API (for QIDO-RS, STOW-RS and WADO-RS),
-
-    "Servers" : {
-
-     "sample" : [ "http://server_IP/dicom-web/" ]tgoing C-FIND requests originating from Orthanc),
+     *   in outgoing C-FIND requests originating from Orthanc),
      * - "GenericNoUniversalWildcard" (to replace "*" by "" in all fields
      *   in outgoing C-FIND SCU requests originating from Orthanc),
      * - "Vitrea",
@@ -361,7 +355,23 @@
      *
      * This parameter is case-sensitive.
      **/
-    "docker" : [ "slicer", "slicer", 8080, "Generic" ]
+    "slicerhub" : {
+    "AET" : "CTKSTORE",
+    "Port" : 4444,
+    "Host" : "localhost",
+    "Manufacturer" : "Generic",
+    "AllowEcho" : true,
+    "AllowFind" : true,
+    "AllowFindWorklist" : true,       // new in 1.10.0
+    "AllowGet"  : true,
+    "AllowMove" : true,
+    "AllowStore" : true,
+    "AllowStorageCommitment" : true,  // new in 1.6.0
+    "AllowTranscoding" : true,         // new in 1.7.0
+    "UseDicomTls" : true,              // new in 1.9.0
+    "LocalAet" : "orthanc",               // new in 1.9.0
+    "Timeout" : 10                     // new in 1.9.1
+  }
     /**
      * By default, the Orthanc SCP accepts all DICOM commands (C-ECHO,
      * C-STORE, C-FIND, C-MOVE, C-GET and storage commitment) issued by the

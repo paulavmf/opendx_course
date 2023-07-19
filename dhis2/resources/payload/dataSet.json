@@ -1,0 +1,28 @@
+{
+  "name": "new_dataset",
+  "shortName": "new_dataset",
+  "periodType": "Weekly",
+  "expiryDays": 30,
+  "dataSetElements": [
+    {
+      "dataElement": {
+        "id": "pyEWRwf54Nv"
+      }
+    }
+  ],
+  "organisationUnits": [
+    {
+      "id": "uBLMFvfWeOh"
+    }
+  ]
+}
+
+
+
+
+{
+    "uid": "OTvkNTijYQY",
+    "code": "IDS_AGG_LAB_WEEKLY_REPORT",
+    "name": "IDS - Aggregate Lab Weekly Report",
+     "externalAccess": true
+}

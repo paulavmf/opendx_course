@@ -1,0 +1,9 @@
+{
+    "name": "new_health_center",
+    "shortName": "new_health_center",
+    "periodType": "Weekly",
+    "openingDate": "2020-01-01",
+    "parent": {
+        "id": "pOIJF1iaCnk"
+    }
+}

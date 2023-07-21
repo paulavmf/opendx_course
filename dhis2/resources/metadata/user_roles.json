@@ -1,0 +1,71 @@
+// extra user roles to post in URL/api/userRoles
+
+[
+    {
+        "name": "National/Province/Facility Health record and information offices",
+        "translations": [],
+        "description": "Enter Data and Monitor, evaluate and analyse data",
+        "authorities": [
+            "M_dhis-web-interpretation",
+            "M_dhis-web-data-quality",
+            "M_dhis-web-dataentry",
+            "F_PREDICTOR_RUN",
+            "M_dhis-web-usage-analytics",
+            "F_RUN_VALIDATION",
+            "M_dhis-web-tracker-capture",
+            "M_dhis-web-translations",
+            "F_SEND_EMAIL",
+            "M_dhis-web-maps",
+            "M_dhis-web-aggregate-data-entry",
+            "M_dhis-web-event-reports",
+            "M_dhis-web-approval",
+            "M_dhis-web-data-visualizer",
+            "M_dhis-web-dashboard",
+            "M_dhis-web-data-administration",
+            "F_EXPORT_DATA",
+            "F_ACCEPT_DATA_LOWER_LEVELS",
+            "F_APPROVE_DATA",
+            "M_dhis-web-cache-cleaner",
+            "M_dhis-web-scheduler",
+            "M_dhis-web-capture",
+            "M_dhis-web-event-visualizer",
+            "M_dhis-web-app-management",
+            "M_dhis-web-messaging",
+            "F_MOBILE_SENDSMS",
+            "M_dhis-web-datastore",
+            "M_dhis-web-reports",
+            "M_dhis-web-sms-configuration"
+        ],
+        "id": "uFcl80EyQD4",
+        "code": null
+    },
+    {
+        "name": "National/province Health Manager",
+        "translations": [],
+        "description": "Monitor and analyse data",
+        "authorities": [
+            "M_dhis-web-interpretation",
+            "F_EXPORT_EVENTS",
+            "M_dhis-web-data-quality",
+            "M_dhis-web-event-reports",
+            "M_dhis-web-approval",
+            "M_dhis-web-data-visualizer",
+            "M_dhis-web-dashboard",
+            "M_dhis-web-data-administration",
+            "F_METADATA_EXPORT",
+            "F_EXPORT_DATA",
+            "F_APPROVE_DATA",
+            "M_dhis-web-event-visualizer",
+            "M_dhis-web-messaging",
+            "F_PERFORM_ANALYTICS_EXPLAIN",
+            "F_MOBILE_SENDSMS",
+            "F_PROGRAM_DASHBOARD_CONFIG_ADMIN",
+            "M_dhis-web-reports",
+            "F_APPROVE_DATA_LOWER_LEVELS",
+            "F_SEND_EMAIL",
+            "M_dhis-web-maps"
+        ],
+        "id": "tRLf1JIMOKN",
+        "code": null
+    }
+]

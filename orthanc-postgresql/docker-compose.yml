@@ -36,9 +36,6 @@ services:
     volumes:
       - orthanc-db:/var/lib/postgresql/data
 
-
-
-
 volumes:
   orthanc-db:
   orthanc-storage:

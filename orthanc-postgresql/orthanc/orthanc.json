@@ -915,9 +915,6 @@ ID",
 },
    "DicomWeb" : {
       "Enable" : true,             // Whether DICOMweb support is enabled
-      "Root" : "/dicom-web/",      // Root URI of the DICOMweb API (for QIDO-RS, STOW-RS and WADO-RS),
-     "Servers" : {
-      "sample" : [ "http://localhost:8042/dicom-web/" ]
-    }
+      "Root" : "/dicom-web/"      // Root URI of the DICOMweb API (for QIDO-RS, STOW-RS and WADO-RS),
   }
 }

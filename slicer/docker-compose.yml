@@ -8,8 +8,6 @@ services:
       - slicer-storage:/var/cache/apt
     ports:
       - "8080:8080"
-
-
 volumes:
 
   slicer-storage:

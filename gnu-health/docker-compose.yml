@@ -1,0 +1,96 @@
+version: '3'
+services:
+
+  # docker run -d --name health1 --rm --link postgres -e DB_NAME=ghs1 -p 8000:8000 -p 8069:8069 opendx/gnu_health (DB_NAME cambia) (cambiar puerto para varias instancias en localhost)
+  health_1:
+    image: opendx/gnu_health
+    build:
+      context: .
+    environment:
+      - DB_NAME=ghs1
+    links:
+      - postgres
+#      - thalamus
+    ports:
+      - "8000:8000"
+      - "8069:8069"
+    volumes:
+      - ${VOLUMES_BASE_PATH:-./volumes}/ghs1_local:/home/gnuhealth/gnuhealth/tryton/server/modules/local
+    depends_on:
+      - postgres
+#    condition: service_healthy
+
+  health_2:
+    image: opendx/gnu_health
+    build:
+      context: .
+    environment:
+      - DB_NAME=ghs2
+    links:
+      - postgres
+#      - thalamus
+    ports:
+      - "8001:8000"
+      - "8070:8069"
+    volumes:
+      - ${VOLUMES_BASE_PATH:-./volumes}/ghs2_local:/home/gnuhealth/gnuhealth/tryton/server/modules/local
+    depends_on:
+      - postgres
+#        condition: service_healthy
+
+  # docker run -d --name postgres -e POSTGRES_USER=gnuhealth -e POSTGRES_PASSWORD=gnuhealth -p 5434:5432 postgres:15.2-alpine
+  postgres:
+    image: postgres:15.2-alpine
+    environment:
+      - POSTGRES_USER=gnuhealth
+      - POSTGRES_PASSWORD=gnuhealth
+      - PGDATA=/var/lib/postgresql/data/
+    volumes:
+      - ${VOLUMES_BASE_PATH:-./volumes}/pg:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U gnuhealth -d gnuhealth" ]
+      interval: 1s
+      timeout: 3s
+      retries: 5
+
+#  # docker run -d --name thalamus_postgres -e POSTGRES_USER=thalamus -e POSTGRES_PASSWORD=thalamus -p 5435:5432 postgres:15.2-alpine
+#  thalamus_postgres:
+#    image: postgres:15.2-alpine
+#    environment:
+#      - POSTGRES_USER=thalamus
+#      - POSTGRES_PASSWORD=thalamus
+#      - PGDATA=/var/lib/postgresql/data/
+#    volumes:
+#      - ${VOLUMES_BASE_PATH:-./volumes}/pg_thalamus:/var/lib/postgresql/data
+#    ports:
+#      - "5435:5432"
+#
+#  # docker run -d --name thalamus --link thalamus_postgres opendx/thalamus
+#  thalamus:
+#    image: opendx/thalamus
+#    links:
+#      - thalamus_postgres
+#    ports:
+#      - "8002:8080"
+
+
+  gnu_client:
+    image: gnu-hc
+    user: root
+    build:
+      context: .
+    links:
+      - health_1
+      - postgres
+#      - thalamus
+    ports:
+      - "6901:6901"
+    environment:
+      - VNC_DISABLE_AUTH=true
+    depends_on:
+      - postgres
+#        condition: service_healthy
+      - health_1
+    command: /bin/bash

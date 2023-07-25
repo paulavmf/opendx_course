@@ -87,6 +87,7 @@ services:
 #      - thalamus
     ports:
       - "6901:6901"
+      - "8085:8085"
     environment:
       - VNC_DISABLE_AUTH=true
     depends_on:

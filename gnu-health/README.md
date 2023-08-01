@@ -8,11 +8,10 @@ This project provides a Docker image for running a GNU Health server, configurab
 
 2. Clone this repository:
 
-git clone https://github.com/OpenDx28/gnu-health-server-docker.git
+git clone https://github.com/paulavmf/opendx_course.git
 
 3. Navigate to the directory:
-
-cd gnu-health-server-docker
+cd opendx_course/gnu-health
 
 ## Usage
 
